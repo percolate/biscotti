@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <title>Demo-App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/json-viewer.css') }}">
+
+    <script>
+        const api_data = '{{data|tojson}}'
+    </script>
+
+</head>
+
+<body>
+
+    <div class="content">
+
+        <div class="content__container">
+            <p class="content__container__text">
+                Hello
+            </p>
+
+            <ul class="content__container__list">
+                <li class="content__container__list__item">world !</li>
+                <li class="content__container__list__item">users !</li>
+                <li class="content__container__list__item">developers !</li>
+                <li class="content__container__list__item"> there !</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="json_content">
+        <div id="json"></div>
+    </div>
+
+
+</body>
+<script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/json-viewer.js') }}"></script>
+
+</html>
