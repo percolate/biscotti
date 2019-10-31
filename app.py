@@ -4,8 +4,12 @@ import pprint
 from flask import Flask, request
 from jose import ExpiredSignatureError, JWTError, jwt
 
+app = Flask(__name__, static_url_path="/", static_folder="public")
 
-app = Flask(__name__, static_url_path="/public", static_folder="public")
+SHOW_TOKEN_HTML = (
+    "<h1>jwt</h1> <pre>{token}</pre> <h1>decoded</h1> <pre>{decoded_token}</pre>"
+)
+SHOW_INVALID_TOKEN_HTML = "<h1>invalid jwt</h1> <pre>{token}</pre>"
 
 
 @app.route("/install", methods=["POST"])
@@ -29,13 +33,6 @@ def hello():
     return "hi\n"
 
 
-show_token_html = (
-    "<h1>jwt</h1> <pre>{token}</pre> <h1>decoded</h1> <pre>{decoded_token}</pre>"
-)
-show_invalid_token_html = "<h1>invalid jwt</h1> <pre>{token}</pre>"
-show_expired_token_html = "<h1>Expired jwt</h1> <pre>{token}</pre>"
-
-
 def verify(token, secret, audience):
     try:
         payload = jwt.decode(
@@ -45,11 +42,11 @@ def verify(token, secret, audience):
             options={"verify_signature": True, "verify_exp": True},
         )
     except ExpiredSignatureError:
-        return show_token_html.format(token=token)
+        return SHOW_TOKEN_HTML.format(token=token)
     except JWTError:
-        return show_invalid_token_html.format(token=token)
+        return SHOW_INVALID_TOKEN_HTML.format(token=token)
 
-    return show_token_html.format(
+    return SHOW_TOKEN_HTML.format(
         token=token, decoded_token=pprint.pformat(payload, indent=4)
     )
 
