@@ -1,12 +1,12 @@
 {
     "name": "Biscotti",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "description": "A demo for Percolate Developer Platform (PDP)",
     "environment": "production",
     "developer": "Percolate, Inc.",
     "developer_email": "email@example.com",
     "support_website": "https://example.com",
-    "logo": "https://pdp-demo-python-app.herokuapp.com/logo.svg",
+    "logo": "https://prclt-biscotti.herokuapp.com/logo.svg",
     "capabilities": [
         "brief:read",
         "brief:create",
@@ -14,49 +14,49 @@
         "brief:delete"
     ],
     "lifecycle": {
-        "install": "https://pdp-demo-python-app.herokuapp.com/install",
-        "uninstall": "https://pdp-demo-python-app.herokuapp.com/uninstall",
-        "enable": "https://pdp-demo-python-app.herokuapp.com/enable",
-        "disable": "https://pdp-demo-python-app.herokuapp.com/disable",
-        "update": "https://pdp-demo-python-app.herokuapp.com/update",
-        "upgrade": "https://pdp-demo-python-app.herokuapp.com/upgrade"
+        "install": "https://prclt-biscotti.herokuapp.com/install",
+        "uninstall": "https://prclt-biscotti.herokuapp.com/uninstall",
+        "enable": "https://prclt-biscotti.herokuapp.com/enable",
+        "disable": "https://prclt-biscotti.herokuapp.com/disable",
+        "update": "https://prclt-biscotti.herokuapp.com/update",
+        "upgrade": "https://prclt-biscotti.herokuapp.com/upgrade"
     },
     "extensions": [
         {
             "location": "campaign_tab",
             "label": "Demo-app",
-            "url": "https://pdp-demo-python-app.herokuapp.com/campaign"
+            "url": "https://prclt-biscotti.herokuapp.com/campaign"
         },
         {
             "location": "post_tab",
             "label": "Demo-app",
-            "url": "https://pdp-demo-python-app.herokuapp.com/content"
+            "url": "https://prclt-biscotti.herokuapp.com/content"
         },
         {
             "location": "asset_tab",
             "label": "Demo-app",
-            "url": "https://pdp-demo-python-app.herokuapp.com/asset"
+            "url": "https://prclt-biscotti.herokuapp.com/asset"
         },
         {
             "location": "request_tab",
             "label": "Demo-app",
-            "url": "https://pdp-demo-python-app.herokuapp.com/request"
+            "url": "https://prclt-biscotti.herokuapp.com/request"
         },
         {
             "location": "task_tab",
             "label": "Demo-app",
-            "url": "https://pdp-demo-python-app.herokuapp.com/task"
+            "url": "https://prclt-biscotti.herokuapp.com/task"
         },
         {
             "location": "top_nav",
             "label": "Demo-app",
-            "url": "https://pdp-demo-python-app.herokuapp.com/top_nav",
-            "logo": "https://pdp-demo-python-app.herokuapp.com/logo.svg"
+            "url": "https://prclt-biscotti.herokuapp.com/top_nav",
+            "logo": "https://prclt-biscotti.herokuapp.com/logo.svg"
         },
         {
             "location": "settings",
             "label": "Demo-app",
-            "url": "https://pdp-demo-python-app.herokuapp.com/settings"
+            "url": "https://prclt-biscotti.herokuapp.com/settings"
         }
     ]
 }
