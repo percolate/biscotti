@@ -1,6 +1,6 @@
 {
-    "name": "PDP Demo Python App",
-    "version": "1.2.0",
+    "name": "Biscotti",
+    "version": "1.2.1",
     "description": "App for demonstrating lifecycle event callback functionality",
     "environment": "production",
     "developer": "Percolate, Inc.",
