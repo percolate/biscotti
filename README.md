@@ -2,7 +2,7 @@
 An app for demonstrating functionality of the Percolate Developer Platform, written in
 Python 3 using Flask.
 
-Defines a manifest and [a Heroku app](https://pdp-demo-python-app.herokuapp.com/).
+Defines a manifest and [a Heroku app](https://prclt-biscotti.herokuapp.com/).
 The manifest defines both lifecycle callback and UI extension URLs, which are served by
 the app.
 
@@ -28,7 +28,7 @@ following guide.
    command
   - If you see the line
     `Forwarding https://490d31a3.ngrok.io -> http://localhost:8000`, this means that
-    the `pdp-demo-python-app.herokuapp.com` domains should be changed to
+    the `prclt-biscotti.herokuapp.com` domains should be changed to
     `490d31a3.ngrok.io`
 1. Upload the modified app manifest in the "App registration" page
 1. Install the app in the "Manage apps" page
