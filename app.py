@@ -1,7 +1,3 @@
-"""
-Flask application for demonstrating the functionality of Percolate Developer Platform
-applications.
-"""
 import os
 import pprint
 
@@ -9,7 +5,7 @@ from flask import Flask, request
 from jose import ExpiredSignatureError, JWTError, jwt
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/public", static_folder="public")
 
 
 @app.route("/install", methods=["POST"])
@@ -17,6 +13,7 @@ app = Flask(__name__)
 @app.route("/enable", methods=["POST"])
 @app.route("/disable", methods=["POST"])
 @app.route("/update", methods=["POST"])
+@app.route("/upgrade", methods=["POST"])
 def generic_lifecycle_endpoint():
     app.logger.info("Got lifecycle web request")
     print(

@@ -1,18 +1,25 @@
 {
     "name": "PDP Demo Python App",
-    "description": "App for demonstrating lifecycle event callback functionality",
     "version": "1.2.0",
-    "environment": "development",
-    "developer_email": "appdeveloper@percolate.com",
-    "support_website": "https://percolate.com/third_party_app_support",
-    "developer": "App Developer",
+    "description": "App for demonstrating lifecycle event callback functionality",
+    "environment": "production",
+    "developer": "Percolate, Inc.",
+    "developer_email": "email@example.com",
+    "support_website": "https://pdp-demo-python-app.herokuapp.com/logo.svg",
     "logo": "https://percolate.com/default_app_logo.png",
+    "capabilities": [
+        "brief:read",
+        "brief:create",
+        "brief:edit",
+        "brief:delete"
+    ],
     "lifecycle": {
         "install": "https://pdp-demo-python-app.herokuapp.com/install",
         "uninstall": "https://pdp-demo-python-app.herokuapp.com/uninstall",
         "enable": "https://pdp-demo-python-app.herokuapp.com/enable",
         "disable": "https://pdp-demo-python-app.herokuapp.com/disable",
-        "update": "https://pdp-demo-python-app.herokuapp.com/update"
+        "update": "https://pdp-demo-python-app.herokuapp.com/update",
+        "upgrade": "https://pdp-demo-python-app.herokuapp.com/upgrade"
     },
     "extensions": [
         {
@@ -44,17 +51,12 @@
             "location": "top_nav",
             "label": "Demo-app",
             "url": "https://pdp-demo-python-app.herokuapp.com/top_nav",
-            "logo": "https://prclt-crostini.herokuapp.com/logo.svg"
+            "logo": "https://pdp-demo-python-app.herokuapp.com/logo.svg"
         },
         {
             "location": "settings",
             "label": "Demo-app",
             "url": "https://pdp-demo-python-app.herokuapp.com/settings"
         }
-    ],
-    "capabilities": [
-        "app_installation:read",
-        "app:read",
-        "brief:read"
     ]
 }
