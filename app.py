@@ -18,16 +18,9 @@ SHOW_INVALID_TOKEN_HTML = """
 """
 
 
-def verify(token, secret, audience):
+def verify(token, secret):
     try:
-        payload = jwt.decode(
-            token,
-            secret,
-            audience=audience,
-            options={"verify_signature": True, "verify_exp": True},
-        )
-    except ExpiredSignatureError:
-        return SHOW_TOKEN_HTML.format(token=token)
+        payload = jwt.decode(token, secret, options={"verify_aud": False})
     except JWTError:
         return SHOW_INVALID_TOKEN_HTML.format(token=token)
 
@@ -47,14 +40,13 @@ def verify(token, secret, audience):
 def generic_ui_extension_endpoint():
     token = request.args.get("jwt")
     app_secret = os.environ.get("APP_SECRET")
-    audience = os.environ.get("APP_AUDIENCE")
 
     if not app_secret:
         return "No APP_SECRET defined"
     if not token:
         return "No JWT found in request"
 
-    return verify(token, app_secret, audience)
+    return verify(token, app_secret)
 
 
 @app.route("/install", methods=["POST"])
