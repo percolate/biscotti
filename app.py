@@ -67,7 +67,7 @@ def generic_ui_component_endpoint():
     if not app_secret:
         return "<h1>No app secret defined.</h1>"
     if not token:
-        return "<h1>Acess token is required.</h1>"
+        return "<h1>Access token is required.</h1>"
 
     return verify(token, app_secret, audience)
 
