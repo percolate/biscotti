@@ -6,31 +6,16 @@ from jose import ExpiredSignatureError, JWTError, jwt
 
 app = Flask(__name__, static_url_path="/", static_folder="public")
 
-SHOW_TOKEN_HTML = (
-    "<h1>jwt</h1> <pre>{token}</pre> <h1>decoded</h1> <pre>{decoded_token}</pre>"
-)
-SHOW_INVALID_TOKEN_HTML = "<h1>invalid jwt</h1> <pre>{token}</pre>"
-
-
-@app.route("/install", methods=["POST"])
-@app.route("/uninstall", methods=["POST"])
-@app.route("/enable", methods=["POST"])
-@app.route("/disable", methods=["POST"])
-@app.route("/update", methods=["POST"])
-@app.route("/upgrade", methods=["POST"])
-def generic_lifecycle_endpoint():
-    app.logger.info("Got lifecycle web request")
-    print(
-        '"{}" endpoint called with data: \n{}'.format(
-            request.base_url.split("/")[-1], request.get_json()
-        )
-    )
-    return "OK\n"
-
-
-@app.route("/")
-def hello():
-    return "hi\n"
+SHOW_TOKEN_HTML = """
+    <h1>jwt</h1>
+    <pre>{token}</pre>
+    <h1>decoded</h1>
+    <pre>{decoded_token}</pre>
+"""
+SHOW_INVALID_TOKEN_HTML = """
+    <h1>invalid jwt</h1>
+    <pre>{token}</pre>
+"""
 
 
 def verify(token, secret, audience):
@@ -59,17 +44,38 @@ def verify(token, secret, audience):
 @app.route("/request", methods=["GET"])
 @app.route("/task", methods=["GET"])
 @app.route("/settings", methods=["GET"])
-def generic_ui_component_endpoint():
+def generic_ui_extension_endpoint():
     token = request.args.get("jwt")
     app_secret = os.environ.get("APP_SECRET")
     audience = os.environ.get("APP_AUDIENCE")
 
     if not app_secret:
-        return "<h1>No app secret defined.</h1>"
+        return "No APP_SECRET defined"
     if not token:
-        return "<h1>Access token is required.</h1>"
+        return "No JWT found in request"
 
     return verify(token, app_secret, audience)
+
+
+@app.route("/install", methods=["POST"])
+@app.route("/uninstall", methods=["POST"])
+@app.route("/enable", methods=["POST"])
+@app.route("/disable", methods=["POST"])
+@app.route("/update", methods=["POST"])
+@app.route("/upgrade", methods=["POST"])
+def generic_lifecycle_endpoint():
+    app.logger.info("Got lifecycle web request")
+    print(
+        '"{}" endpoint called with data: \n{}'.format(
+            request.base_url.split("/")[-1], request.get_json()
+        )
+    )
+    return "OK\n"
+
+
+@app.route("/")
+def hello():
+    return "hi\n"
 
 
 if __name__ == "__main__":
