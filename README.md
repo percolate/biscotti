@@ -40,11 +40,11 @@ following guide.
 1. Start the app back up with the `APP_SECRET` environment variable set to the value
    shown, and the `APP_AUDIENCE` variable set to the `ngrok` domain provided in the
    previous section, an example of this command:
-  ```
-  APP_SECRET=c12de0430670c1e251e0502aa3afb385374df5337bdd20b27b0e77fc702c9b1a \
-  APP_SECRET=5406e8ce.ngrok.io \
-  python app.py
-  ```
+     ```
+     APP_SECRET=c12de0430670c1e251e0502aa3afb385374df5337bdd20b27b0e77fc702c9b1a \
+     APP_SECRET=5406e8ce.ngrok.io \
+     python app.py
+     ```
 1. Navigate to a page with a UI component served by the app and verify that the JWT
    payload is properly decoded - you should see a JSON payload under the "decoded"
    header
