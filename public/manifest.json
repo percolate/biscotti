@@ -24,38 +24,38 @@
     "extensions": [
         {
             "location": "campaign_tab",
-            "label": "Demo-app",
+            "label": "Biscotti",
             "url": "https://prclt-biscotti.herokuapp.com/campaign"
         },
         {
             "location": "post_tab",
-            "label": "Demo-app",
+            "label": "Biscotti",
             "url": "https://prclt-biscotti.herokuapp.com/content"
         },
         {
             "location": "asset_tab",
-            "label": "Demo-app",
+            "label": "Biscotti",
             "url": "https://prclt-biscotti.herokuapp.com/asset"
         },
         {
             "location": "request_tab",
-            "label": "Demo-app",
+            "label": "Biscotti",
             "url": "https://prclt-biscotti.herokuapp.com/request"
         },
         {
             "location": "task_tab",
-            "label": "Demo-app",
+            "label": "Biscotti",
             "url": "https://prclt-biscotti.herokuapp.com/task"
         },
         {
             "location": "top_nav",
-            "label": "Demo-app",
+            "label": "Biscotti",
             "url": "https://prclt-biscotti.herokuapp.com/top_nav",
             "logo": "https://prclt-biscotti.herokuapp.com/logo.svg"
         },
         {
             "location": "settings",
-            "label": "Demo-app",
+            "label": "Biscotti Settings",
             "url": "https://prclt-biscotti.herokuapp.com/settings"
         }
     ]
