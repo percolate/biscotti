@@ -54,7 +54,7 @@ def lifecycle_callback():
     message = '"/{}" lifecycle callback endpoint called with data: \n{}'.format(
         request.base_url.split("/")[-1], request.get_json()
     )
-    app.logger.info(message)
+    print(message)
     return "{}\n".format(message)
 
 
