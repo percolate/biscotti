@@ -51,11 +51,11 @@ def echo_jwt():
 @app.route("/update", methods=["POST"])
 @app.route("/upgrade", methods=["POST"])
 def lifecycle_callback():
-    message = '"{}" lifecycle callback endpoint called with data: \n{}'.format(
+    message = '"/{}" lifecycle callback endpoint called with data: \n{}'.format(
         request.base_url.split("/")[-1], request.get_json()
     )
     app.logger.info(message)
-    return "OK\n"
+    return "{}\n".format(message)
 
 
 @app.route("/")
