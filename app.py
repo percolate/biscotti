@@ -18,7 +18,22 @@ SHOW_INVALID_TOKEN_HTML = """
 """
 
 
-def verify(token, secret):
+@app.route("/top_nav", methods=["GET"])
+@app.route("/campaign", methods=["GET"])
+@app.route("/content", methods=["GET"])
+@app.route("/asset", methods=["GET"])
+@app.route("/request", methods=["GET"])
+@app.route("/task", methods=["GET"])
+@app.route("/settings", methods=["GET"])
+def echo_jwt():
+    app_secret = os.environ.get("APP_SECRET")
+    token = request.args.get("jwt")
+
+    if not app_secret:
+        return "No APP_SECRET defined"
+    if not token:
+        return "No JWT found in request"
+
     try:
         payload = jwt.decode(token, secret, options={"verify_aud": False})
     except JWTError:
@@ -29,39 +44,17 @@ def verify(token, secret):
     )
 
 
-# object handles
-@app.route("/top_nav", methods=["GET"])
-@app.route("/campaign", methods=["GET"])
-@app.route("/content", methods=["GET"])
-@app.route("/asset", methods=["GET"])
-@app.route("/request", methods=["GET"])
-@app.route("/task", methods=["GET"])
-@app.route("/settings", methods=["GET"])
-def generic_ui_extension_endpoint():
-    token = request.args.get("jwt")
-    app_secret = os.environ.get("APP_SECRET")
-
-    if not app_secret:
-        return "No APP_SECRET defined"
-    if not token:
-        return "No JWT found in request"
-
-    return verify(token, app_secret)
-
-
 @app.route("/install", methods=["POST"])
 @app.route("/uninstall", methods=["POST"])
 @app.route("/enable", methods=["POST"])
 @app.route("/disable", methods=["POST"])
 @app.route("/update", methods=["POST"])
 @app.route("/upgrade", methods=["POST"])
-def generic_lifecycle_endpoint():
-    app.logger.info("Got lifecycle web request")
-    print(
-        '"{}" endpoint called with data: \n{}'.format(
-            request.base_url.split("/")[-1], request.get_json()
-        )
+def lifecycle_callback():
+    message = '"{}" lifecycle callback endpoint called with data: \n{}'.format(
+        request.base_url.split("/")[-1], request.get_json()
     )
+    app.logger.info(message)
     return "OK\n"
 
 
