@@ -6,6 +6,9 @@ Defines a manifest and [a Heroku app](https://prclt-biscotti.herokuapp.com/).
 The manifest defines both lifecycle callback and UI extension URLs, which are served by
 the app.
 
+For a similar app written in Typescript, see
+[Crostini.](https://github.com/percolate/crostini)
+
 ## Running the app locally
 
 To create an application server running on your own machine instead of Heroku, use the
