@@ -35,7 +35,7 @@ def echo_jwt():
         return "No JWT found in request"
 
     try:
-        payload = jwt.decode(token, secret, options={"verify_aud": False})
+        payload = jwt.decode(token, app_secret, options={"verify_aud": False})
     except JWTError:
         return SHOW_INVALID_TOKEN_HTML.format(token=token)
 
