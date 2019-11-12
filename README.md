@@ -17,7 +17,7 @@ following guide.
 ### Run the server
 
 1. Create a virtualenv: `python3 -m venv venv`
-1. Activate it: `./venv/bin/activate`
+1. Activate it: `source venv/bin/activate`
 1. Install the required modules: `pip install -r requirements.txt`
 1. Run the server: `python app.py` (the default port is `8000`)
 1. Verify it's working by navigating to [http://localhost:8000](http://localhost:8000),
