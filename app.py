@@ -51,6 +51,17 @@ def echo_jwt():
 @app.route("/update", methods=["POST"])
 @app.route("/upgrade", methods=["POST"])
 def lifecycle_callback():
+    header_secret = request.headers.get("X-Perc-App-Secret")
+    env_secret = os.environ.get("APP_SECRET")
+    if not env_secret:
+        print("Cannot validate request, no APP_SECRET environment variable defined")
+    elif header_secret != env_secret:
+        print(
+            "WARNING! This request may not have come from Percolate, the "
+            "X-Perc-App-Secret header value does not match the APP_SECRET environment "
+            "variable!"
+        )
+
     message = '"/{}" lifecycle callback endpoint called with data: \n{}'.format(
         request.base_url.split("/")[-1], request.get_json()
     )
