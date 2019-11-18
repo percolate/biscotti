@@ -53,3 +53,9 @@ jobs:
       - store_artifacts:
           path: test-reports
           destination: test-reports
+  black:
+    docker:
+      - image: 667005031541.dkr.ecr.us-west-1.amazonaws.com/black:19.3b0
+    steps:
+      - checkout
+      - run: pyfmt
