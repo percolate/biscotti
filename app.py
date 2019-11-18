@@ -6,6 +6,7 @@ from jose import ExpiredSignatureError, JWTError, jwt
 
 app = Flask(__name__, static_url_path="/", static_folder="public")
 
+SECRET_HEADER = "X-Perc-App-Secret"
 SHOW_TOKEN_HTML = """
     <h1>jwt</h1>
     <pre>{token}</pre>
@@ -18,6 +19,10 @@ SHOW_INVALID_TOKEN_HTML = """
 """
 
 
+def get_app_secret():
+    return os.environ.get("APP_SECRET")
+
+
 @app.route("/top_nav", methods=["GET"])
 @app.route("/campaign", methods=["GET"])
 @app.route("/content", methods=["GET"])
@@ -26,7 +31,7 @@ SHOW_INVALID_TOKEN_HTML = """
 @app.route("/task", methods=["GET"])
 @app.route("/settings", methods=["GET"])
 def echo_jwt():
-    app_secret = os.environ.get("APP_SECRET")
+    app_secret = get_app_secret()
     token = request.args.get("jwt")
 
     if not app_secret:
@@ -51,11 +56,11 @@ def echo_jwt():
 @app.route("/update", methods=["POST"])
 @app.route("/upgrade", methods=["POST"])
 def lifecycle_callback():
-    header_secret = request.headers.get("X-Perc-App-Secret")
-    env_secret = os.environ.get("APP_SECRET")
-    if not env_secret:
+    header_secret = request.headers.get(SECRET_HEADER)
+    app_secret = get_app_secret()
+    if not app_secret:
         print("Cannot validate request, no APP_SECRET environment variable defined")
-    elif header_secret != env_secret:
+    elif header_secret != app_secret:
         print(
             "WARNING! This request may not have come from Percolate, the "
             "X-Perc-App-Secret header value does not match the APP_SECRET environment "
