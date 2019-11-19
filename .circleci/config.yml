@@ -41,12 +41,12 @@ jobs:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
-      - check_manifest_json:
+      - run:
           name: check manifest json
           command: |
             python3 -m json.tool public/manifest.json
 
-      - black:
+      - run:
           name: check formatting with black
           command: |
             . venv/bin/activate
